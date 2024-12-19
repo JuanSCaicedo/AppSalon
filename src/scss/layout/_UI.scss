@@ -1,0 +1,65 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.contenedor-app {
+  @include m.desktop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 100vh;
+  }
+
+  .imagen {
+    height: 20rem;
+    background-image: url(../img/1.jpg);
+    background-size: cover;
+    background-position: center center;
+    @include m.desktop {
+      height: auto;
+    }
+  }
+
+  .app {
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    @include m.desktop {
+      overflow: scroll;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 0.9rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: v.$gris;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.barra {
+  margin: v.$separacion 0;
+
+  @include m.desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .boton {
+    @include m.boton(v.$negro, v.$blanco);
+    margin: 0;
+  }
+}
+
+.barra-servicios {
+  margin-bottom: v.$separacion;
+  @include m.desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+  .boton {
+    margin: 0 1rem 1rem 0;
+  }
+}
